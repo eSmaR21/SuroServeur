@@ -1,0 +1,20 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+
+	<legend>Boutique : payment</legend>
+
+	<div class="alert alert-error">
+		Attention ! Il faut que vous voyez connecté au serveur lors de l'achat !
+	</div>
+
+	<div style="display: table; margin: auto">
+		<input type="hidden" name="monelib_data0" value="{{ id }}" />
+		{% if nb == 1 %}
+			<script type="text/javascript" src="http://www.monelib.com/accessScript/getPosScript.php?ext_frm_idpos=1605617" ></script>
+		{% elseif nb == 2 %}
+			<script type="text/javascript" src="http://www.monelib.com/accessScript/getPosScript.php?ext_frm_idpos=9148084" ></script>
+		{% endif %}
+	</div>
+
+{% endblock %}

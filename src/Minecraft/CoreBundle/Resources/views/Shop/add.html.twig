@@ -1,0 +1,26 @@
+{% extends "::layout.html.twig" %}
+{% form_theme form 'MinecraftUserBundle:Form:bootstrap.html.twig' %}
+
+{% block body %}
+
+<form class="form-horizontal" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+	<legend>Ajout d'item</legend>
+
+	{{ form_row(form.name, { 'label_attr': {'class':'control-label'} }) }}
+	{{ form_row(form.picture, { 'label_attr': {'class':'control-label'} }) }}
+	{{ form_row(form.description, { 'label_attr': {'class':'control-label'} }) }}
+	{{ form_row(form.price, { 'label_attr': {'class':'control-label'} }) }}
+	{{ form_row(form.item, { 'label_attr': {'class':'control-label'} }) }}
+	{{ form_row(form.count, { 'label_attr': {'class':'control-label'} }) }}
+
+	<div class="control-group">
+		<div class="controls">
+			<button type="submit" class="btn">Envoyer</button>
+		</div>
+	</div>
+
+	{{ form_rest(form) }}
+	
+</form>
+
+{% endblock %}

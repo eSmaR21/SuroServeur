@@ -1,0 +1,14 @@
+services:
+    minecraft_user.change_password.form.type:
+        class: Minecraft\UserBundle\Form\Type\ChangePasswordFormType
+        tags:
+            - { name: form.type, alias: minecraft_user_change_password }
+    minecraft_user.registration.form.type:
+        class: Minecraft\UserBundle\Form\Type\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: minecraft_user_registration }
+    minecraft_user.resetting.form.type:
+        class: Minecraft\UserBundle\Form\Type\ResettingFormType
+        tags:
+            - { name: form.type, alias: minecraft_user_resetting }

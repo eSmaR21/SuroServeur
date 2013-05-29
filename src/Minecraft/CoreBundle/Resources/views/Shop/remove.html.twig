@@ -1,0 +1,23 @@
+{% extends "::layout.html.twig" %}
+{% form_theme form 'MinecraftUserBundle:Form:bootstrap.html.twig' %}
+
+{% block body %}
+
+<p>
+	Etes-vous certain de vouloir supprimer l'item "{{ item.name }}" ?
+</p>
+
+<form action="{{ path('minecraft_core_shop_remove', {'id': item.id}) }}" method="post">
+
+	<a href="{{ path('minecraft_core_shop_index') }}" class="btn">
+		<i class="icon-chevron-left"></i>
+		Retour
+	</a>
+
+	<input type="submit" value="Supprimer" class="btn btn-danger" />
+
+	{{ form_rest(form) }}
+
+</form>
+
+{% endblock %}

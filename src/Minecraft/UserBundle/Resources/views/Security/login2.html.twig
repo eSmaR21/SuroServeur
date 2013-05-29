@@ -1,0 +1,36 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+
+	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+		<a href="{{ path('fos_user_security_logout') }}" role="button" class="btn" style="float: right; margin: 15px 10px">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+		<p style="float: right; margin: 20px 0">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</p>
+	{% else %}
+		<a href="#login" type="button" class="btn" data-toggle="modal" style="float: right; margin: 15px 10px">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+		<a href="{{ path('fos_user_registration_register') }}" type="button" class="btn btn-primary" style="float: right; margin: 15px 0">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a>
+	{% endif %}
+
+	{% if error %}
+		<div>{{ error|trans }}</div>
+	{% endif %}
+
+	<form id="login" class="form-signin modal hide fade" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true" action="{{ path("fos_user_security_check") }}" method="post">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+
+		<h2 class="form-signin-heading">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</h2>
+
+		<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+		<input type="text" id="username" name="_username" class="input-block-level" placeholder="Nom d'utilisateur" value="{{ last_username }}" required="required">
+
+		<input type="password" id="password" name="_password" required="required" class="input-block-level" placeholder="Mot de passe">
+
+		<label class="checkbox">
+			<input type="checkbox" id="remember_me" name="_remember_me" value="on">{{ 'security.login.remember_me'|trans }}
+		</label>
+
+		<button id="_submit" name="_submit" class="btn btn-large btn-primary" type="submit">{{ 'security.login.submit'|trans }}</button>
+		<a href="{{ path('fos_user_resetting_request') }}" style="margin-left: 10px">Mot de passe oublié ?</a>
+	</form>
+
+{% endblock %}

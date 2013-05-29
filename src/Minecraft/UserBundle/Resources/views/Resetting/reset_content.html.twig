@@ -1,0 +1,16 @@
+{% form_theme form 'MinecraftUserBundle:Form:bootstrap.html.twig' %}
+
+<form class="form-horizontal" action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_resetting_reset">
+	<legend>{{ 'resetting.reset.submit'|trans({}, 'FOSUserBundle') }}</legend>
+
+	{{ form_row(form.new) }}
+
+	<div class="control-group">
+		<div class="controls">
+			<button type="submit" class="btn">{{ 'resetting.reset.submit'|trans({}, 'FOSUserBundle') }}</button>
+		</div>
+	</div>
+
+	{{ form_rest(form) }}
+	
+</form>

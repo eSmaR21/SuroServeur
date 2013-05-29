@@ -1,0 +1,32 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+
+	<legend>Boutique
+		{% if is_granted("ROLE_ADMIN") %}
+			<div style="display: inline; float: right">
+				<a class="btn btn-mini btn-primary" type="button" href="{{ path('minecraft_core_shop_add') }}">Ajouter un item</a>
+			</div>
+		{% endif %}
+	</legend>
+	<ul class="thumbnails" style="margin-left: -15px">
+		{% for item in items %}
+			<li class="span2">
+				<div class="thumbnail">
+					<h4 style="text-align: center;">{{ item.name }}</h4>
+					<img src="{{ asset('img/shop/'~item.path) }}" alt="{{ item.name }}" style="width: 100px; height: 100px">
+					<p style="text-align: center; margin: 10px auto">{{ item.description }}</p>
+					{% if is_granted("ROLE_ADMIN") %}
+						<div class="btn-group">
+							<a class="btn btn-primary" type="button" href="{{ path('minecraft_core_shop_buy', { 'id': item.id }) }}" style="width: 95px"><i class="icon-shopping-cart icon-white"></i> Acheter</a>
+							<a class="btn btn-danger" type="button" href="{{ path('minecraft_core_shop_remove', { 'id': item.id }) }}"><i class="icon-remove icon-white"></i></a>
+						</div>
+					{% else %}
+						<a class="btn btn-primary" type="button" href="{{ path('minecraft_core_shop_buy', { 'id': item.id }) }}" style="display: block"><i class="icon-shopping-cart icon-white"></i> Acheter</a>
+					{% endif %}
+				</div>
+			</li>
+		{% endfor %}
+	</ul>
+
+{% endblock %}

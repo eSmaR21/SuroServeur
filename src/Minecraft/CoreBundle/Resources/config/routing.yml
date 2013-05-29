@@ -1,0 +1,43 @@
+minecraft_core_index:
+    pattern:  /
+    defaults: { _controller: MinecraftCoreBundle:Default:index }
+
+minecraft_core_server:
+    pattern:  /server
+    defaults: { _controller: MinecraftCoreBundle:Default:server }
+
+minecraft_core_join:
+    pattern:  /join
+    defaults: { _controller: MinecraftCoreBundle:Default:join }
+
+minecraft_core_shop_index:
+    pattern:  /shop/
+    defaults: { _controller: MinecraftCoreBundle:Shop:index }
+
+minecraft_core_shop_add:
+    pattern:  /shop/add
+    defaults: { _controller: MinecraftCoreBundle:Shop:add }
+
+minecraft_core_shop_remove:
+    pattern:  /shop/remove/{id}
+    defaults: { _controller: MinecraftCoreBundle:Shop:remove }
+    requirements:
+        id:  \d+
+
+minecraft_core_shop_success:
+    pattern:  /shop/success
+    defaults: { _controller: MinecraftCoreBundle:Shop:success }
+
+minecraft_core_shop_denied:
+    pattern:  /shop/denied
+    defaults: { _controller: MinecraftCoreBundle:Shop:denied }
+
+minecraft_core_shop_error:
+    pattern:  /shop/error
+    defaults: { _controller: MinecraftCoreBundle:Shop:error }
+
+minecraft_core_shop_buy:
+    pattern:  /shop/{id}
+    defaults: { _controller: MinecraftCoreBundle:Shop:buy }
+    requirements:
+        id:  \d+

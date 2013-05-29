@@ -1,0 +1,23 @@
+<form class="form-horizontal" action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
+	<legend>Réinitialisation de mot de passe</legend>
+
+	{% if invalid_username is defined %}
+		<div class="alert alert-error">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<strong>Erreur !</strong> {{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}, 'FOSUserBundle') }}
+		</div>
+	{% endif %}
+
+	<div class="control-group">
+		<label class="control-label" for="username" style="width: 240px">{{ 'resetting.request.username'|trans({}, 'FOSUserBundle') }}</label>
+		<div class="controls" style="margin-left: 260px">
+			<input type="text" id="username"  name="username" required="required">
+		</div>
+	</div>
+
+	<div class="control-group">
+		<div class="controls" style="margin-left: 260px">
+			<button type="submit" class="btn">{{ 'resetting.request.submit'|trans({}, 'FOSUserBundle') }}</button>
+		</div>
+	</div>
+</form>

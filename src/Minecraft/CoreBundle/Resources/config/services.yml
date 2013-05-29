@@ -1,0 +1,3 @@
+services:
+    minecraft_core.rcon:
+        class: Minecraft\CoreBundle\Rcon\MinecraftRcon
